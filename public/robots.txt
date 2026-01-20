@@ -1,0 +1,3 @@
+user-agent: *
+Allow:/
+Sitemap:https://www.carpinteriaoruna.com/sitemap.xml

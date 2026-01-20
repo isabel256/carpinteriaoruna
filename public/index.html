@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carpintería Oruna | Arte en Madera</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Playfair+Display:wght@700&display=swap"
+        rel="stylesheet">
+        <link rel="shortcut icon" href="/public/logo-carpentry.png" type="image/x-icon">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --primary: #e67e22;
+            /* Naranja madera vibrante */
+            --dark: #1a1a1a;
+            --light: #f4f4f4;
+            --accent: #d35400;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background-color: var(--dark);
+            color: var(--light);
+            scroll-behavior: smooth;
+        }
+
+        /* Navegación */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 10%;
+            background: rgba(0, 0, 0, 0.8);
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            border-bottom: 2px solid var(--primary);
+        }
+
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.5rem;
+            color: var(--primary);
+            font-weight: bold;
+        }
+
+        /* Hero Moderno */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3)),
+                url('/img/porty-port.jpeg');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 0 10%;
+        }
+
+        .hero h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 4rem;
+            max-width: 600px;
+            line-height: 1.1;
+            margin-bottom: 20px;
+        }
+
+        .hero h1 span {
+            color: var(--primary);
+        }
+
+        .cta-main {
+            display: inline-block;
+            background: var(--primary);
+            color: white;
+            padding: 15px 35px;
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: bold;
+            transition: 0.4s;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            width: fit-content;
+        }
+
+        .cta-main i {
+            font-size: 20px;
+        }
+
+        .cta-main:hover {
+            background: var(--accent);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px rgba(230, 126, 34, 0.5);
+        }
+
+        /* Sección Servicios Impactante */
+        .section {
+            padding: 80px 10%;
+            text-align: center;
+
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .service-card {
+            background: #252525;
+            padding: 40px;
+            border-radius: 15px;
+            position: relative;
+            overflow: hidden;
+            transition: 0.3s;
+            border-bottom: 4px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
+            background: #2d2d2d;
+        }
+
+        .service-card h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            font-size: 1.5rem;
+        }
+
+        .service-card p {
+            color: var(--light);
+            margin-bottom: 15px;
+            font-size: 1rem;
+            line-height: 1.4;
+        }
+
+        /* Galería/Portafolio Visual */
+        .gallery-preview {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            height: 300px;
+            gap: 5px;
+        }
+
+        .gallery-item {
+            scale: 0.9;
+            background-size: cover;
+            background-position: center;
+            filter: grayscale(80%);
+            transition: 0.5s;
+        }
+
+        .gallery-item:hover {
+            filter: grayscale(0%);
+            flex-grow: 2;
+            scale: 1;
+            z-index: 10;
+        }
+
+        /* Footer / Contacto */
+        .contact-area {
+            background: var(--primary);
+            color: white;
+            padding: 60px 10%;
+            text-align: center;
+        }
+
+        footer {
+            padding: 20px;
+            text-align: center;
+            font-size: 0.9rem;
+            background: #000;
+            color: #555;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .gallery-preview {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+
+
+        .image {
+            border-radius: 20px;
+            overflow: hidden;
+            margin: auto;
+            max-width: 300px;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+
+        .direction,
+        .redes {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 10px;
+        }
+
+        .redes {
+            opacity: 60%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 10px;
+            color: #ffffff;
+            gap: 20px;
+        }
+
+        .redes-i:hover,
+        .redes-i .y:hover {
+            opacity: 80%;
+
+        }
+
+        .redes-i {
+            width: 30px;
+            height: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #ffffff;
+            padding: 10px;
+            border-radius: 50%;
+        }
+
+        .redes-i i {
+            font-size: 20px;
+            color: blue;
+        }
+
+        .redes-i .y {
+            font-size: 20px;
+            color: #000;
+        }
+
+        .redes .g {
+            font-size: 20px;
+            color: #ffa500;
+        }
+
+        .ubication {
+            color: var(--primary);
+            font-weight: 700;
+            padding: 10px;
+        }
+
+        .ubication h3 {
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <nav>
+        <div class="logo">ORUNA • CARPINTERÍA</div>
+        <div style="font-weight: bold; color: white;">CHILLIA, PERÚ</div>
+    </nav>
+
+    <section class="hero">
+        <h1>Transformamos la <span>Madera</span> en Obra de Arte</h1>
+        <p style="font-size: 1.2rem; margin-bottom: 30px; color: #ccc;">Diseño exclusivo, calidad y durabilidad
+            garantizada.</p>
+        <a href="#contacto" class="cta-main">Solicitar Cotización</a>
+
+    </section>
+
+    <div class="gallery-preview">
+        <div class="gallery-item" style="background-image: url('/img/ropero-de-cedro.jpg');"></div>
+        <div class="gallery-item" style="background-image: url('/img/sillas-sencillas.jpg');"></div>
+        <div class="gallery-item" style="background-image: url('/img/cama-sencilla.png');"></div>
+        <div class="gallery-item" style="background-image: url('/img/comedor-rustico-imagen.jpeg');"></div>
+    </div>
+
+    <section class="section" id="servicios">
+        <h2 style="font-size: 3rem; font-family: 'Playfair Display', serif; margin-bottom: 10px;">Nuestros Servicios
+        </h2>
+        <p
+            style="color: var(--primary); font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 50px;">
+            Especialistas en Madera de Cedro y Finos Acabados</p>
+
+        <div class="services-grid">
+            <div class="service-card">
+                <div class="image">
+                    <img style="width: 100%;" src="/img/Fabricación.jpg" alt="Fabricación">
+                </div>
+                <h3>Fabricación a Medida</h3>
+                <p>Diseñamos y creamos piezas únicas desde cero: roperos de cedro, comedores robustos y cocinas
+                    integrales que se adaptan perfectamente a tu espacio y estilo.</p>
+                <ul style="list-style: none; margin-top: 15px; color: #aaa; font-size: 0.9rem;">
+                    <li>✓ Planos personalizados</li>
+                    <li>✓ Maderas seleccionadas</li>
+                </ul>
+            </div>
+
+            <div class="service-card" style="border-top: 4px solid var(--primary);">
+                <div class="image">
+                    <img style="width: 100%;" src="/img/Reparación.jpg" alt="Reparación">
+                </div>
+                <h3>Reparación Estructural</h3>
+                <p>¿Tu mueble favorito está dañado? Reparamos estructuras, reforzamos sillas y mesas, y solucionamos
+                    problemas de polilla o humedad para devolverles la vida.</p>
+                <ul style="list-style: none; margin-top: 15px; color: #aaa; font-size: 0.9rem;">
+                    <li>✓ Refuerzo de uniones</li>
+                    <li>✓ Cambio de piezas dañadas</li>
+                </ul>
+            </div>
+
+            <div class="service-card">
+                <div class="image">
+                    <img style="width: 100%;" src="/img/Mantenimiento.jpg" alt="Mantenimiento">
+                </div>
+                <h3>Mantenimiento y Acabados</h3>
+                <p>Especialistas en laqueado, barnizado y pulido premium. Aplicamos tratamientos protectores que
+                    resaltan la veta natural de la madera y garantizan su brillo por años.</p>
+                <ul style="list-style: none; margin-top: 15px; color: #aaa; font-size: 0.9rem;">
+                    <li>✓ Laqueado brillante/mate</li>
+                    <li>✓ Tratamiento antipolilla</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <section id="contacto" class="contact-area">
+        <h2>¿Listo para empezar tu proyecto?</h2>
+        <p style="margin-bottom: 25px;">Hablemos de tus ideas y hagámoslas realidad.</p>
+        <a href="https://wa.me/976299818" target="_blank" class="cta-main" style="background: white; color: var(--primary);"><i
+                class="bi bi-whatsapp"></i> Escríbenos
+            por WhatsApp</a>
+    </section>
+
+    <footer>
+        <div class="direction">
+            <div class="ubication">
+                <h3>ADDRESS:</h3>
+                <div class="redes">
+                     <div class="redes-i">
+                        <a href="https://maps.app.goo.gl/jaSjTxDTDeFe7e3t7"><i class="bi bi-geo-alt-fill g"></i></a>
+                    </div>
+                    ANEXO HUANCHILCA - CHILIA - PATAZ
+                </div>
+            </div>
+            <div class="ubication">
+                <h3>SIGUENOS EN NUETRAS REDES:</h3>
+                <div class="redes">
+                    <div class="redes-i">
+                        <a href="https://web.facebook.com/carpinteriaoruna"><i class="bi bi-facebook"></i></a>
+                    </div>
+                    <div class="redes-i">
+                        <a href="https://www.tiktok.com/@carpinteriaoruna"><i class="bi bi-tiktok y"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        &copy; 2026 Carpintería Oruna. Todos los derechos reservados.
+
+    </footer>
+
+</body>
+
+</html>
