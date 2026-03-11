@@ -1,0 +1,4 @@
+node_modules/
+.env
+carpinteria.db
+*.db-journal

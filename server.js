@@ -1,14 +1,25 @@
+require('dotenv').config();
 const express = require('express');
 const sqlite3 = require('sqlite3').verbose();
 const path = require('path');
 
 const app = express();
-const db = new sqlite3.Database('./carpinteria.db');
+const BOT_TOKEN = process.env.BOT_TOKEN;
+const MI_CHAT_ID = process.env.MI_CHAT_ID;
 
-const BOT_TOKEN = '8093217238:AAGVAHiA0UXjykV5qbkMub3R02Gh59GwMgk';
-const MI_CHAT_ID = '5917519458';
+const dbPath = path.resolve(__dirname, 'carpinteria.db');
+
+const db = new sqlite3.Database(dbPath, (err) => {
+    if (err) {
+        console.error(" Error al conectar con la DB:", err.message);
+    } else {
+        console.log(" Conexión exitosa");
+    }
+});
+
 
 app.use(express.json());
+app.use(express.urlencoded({ extended: true }));
 app.use(express.static('public'));
 
 db.run(`CREATE TABLE IF NOT EXISTS registros (
@@ -90,6 +101,7 @@ app.post('/api/registro', async (req, res) => {
     }
 });
 
-app.listen(3000, () => {
-    console.log(" Servidor activo en http://localhost:3000");
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, () => {
+    console.log(`Servidor activo en el puerto ${PORT}`);
 });
