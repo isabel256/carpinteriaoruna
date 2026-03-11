@@ -4,9 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <title>Carpintería Oruna | Arte en Madera</title>
-
     <meta name="description"
         content="En Carpintería Oruna ofrecemos diseño exclusivo, calidad y durabilidad garantizada en cada pieza. Expertos en fabricación y restauración de muebles.">
     <meta name="keywords"
@@ -24,25 +22,21 @@
     <meta name="twitter:description" content="Diseño exclusivo, calidad y durabilidad garantizada.">
     <meta name="twitter:image" content="https://www.carpinteriaoruna.com/img/logo-carpentry.png">
 
-    <title>Carpintería Oruna | Arte en Madera</title>
+    <link rel="shortcut icon" href="img/logo-carpentry.png" type="image/x-icon">
+
     <link
         href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;800&family=Playfair+Display:wght@700&display=swap"
         rel="stylesheet">
-    <link rel="shortcut icon" href="img/logo-carpentry.png" type="image/x-icon">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="https://cdn.tailwindcss.com"></script>
+
     <style>
         :root {
             --primary: #e67e22;
-            /* Naranja madera vibrante */
             --dark: #1a1a1a;
             --light: #f4f4f4;
             --accent: #d35400;
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
         }
 
         body {
@@ -52,117 +46,16 @@
             scroll-behavior: smooth;
         }
 
-        /* Navegación */
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 20px 10%;
-            background: rgba(0, 0, 0, 0.8);
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            border-bottom: 2px solid var(--primary);
-        }
-
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 1.5rem;
-            color: var(--primary);
-            font-weight: bold;
-        }
-
         /* Hero Moderno */
         .hero {
             height: 100vh;
-            background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3)),
-                url('img/porty-port.jpeg');
+            background: linear-gradient(to right, rgba(0, 0, 0, 0.9), rgba(0, 0, 0, 0.3)), url('img/porty-port.jpeg');
             background-size: cover;
             background-position: center;
             display: flex;
             flex-direction: column;
             justify-content: center;
             padding: 0 10%;
-        }
-
-        .hero h1 {
-            font-family: 'Playfair Display', serif;
-            font-size: 4rem;
-            max-width: 600px;
-            line-height: 1.1;
-            margin-bottom: 20px;
-        }
-
-        .hero h1 span {
-            color: var(--primary);
-        }
-
-        .cta-main {
-            display: inline-block;
-            background: var(--primary);
-            color: white;
-            padding: 15px 35px;
-            text-decoration: none;
-            border-radius: 50px;
-            font-weight: bold;
-            transition: 0.4s;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            width: fit-content;
-        }
-
-        .cta-main i {
-            font-size: 20px;
-        }
-
-        .cta-main:hover {
-            background: var(--accent);
-            transform: scale(1.05);
-            box-shadow: 0 0 20px rgba(230, 126, 34, 0.5);
-        }
-
-        /* Sección Servicios Impactante */
-        .section {
-            padding: 80px 10%;
-            text-align: center;
-
-        }
-
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .service-card {
-            background: #252525;
-            padding: 40px;
-            border-radius: 15px;
-            position: relative;
-            overflow: hidden;
-            transition: 0.3s;
-            border-bottom: 4px solid transparent;
-        }
-
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: var(--primary);
-            background: #2d2d2d;
-        }
-
-        .service-card h3 {
-            color: var(--primary);
-            margin-bottom: 15px;
-            font-size: 1.5rem;
-        }
-
-        .service-card p {
-            color: var(--light);
-            margin-bottom: 15px;
-            font-size: 1rem;
-            line-height: 1.4;
         }
 
         /* Galería/Portafolio Visual */
@@ -174,7 +67,6 @@
         }
 
         .gallery-item {
-            scale: 0.9;
             background-size: cover;
             background-position: center;
             filter: grayscale(80%);
@@ -183,217 +75,273 @@
 
         .gallery-item:hover {
             filter: grayscale(0%);
-            flex-grow: 2;
-            scale: 1;
+            transform: scale(1.05);
             z-index: 10;
         }
 
-        /* Footer / Contacto */
-        .contact-area {
-            background: var(--primary);
-            color: white;
-            padding: 60px 10%;
-            text-align: center;
+        .service-card {
+            background: #252525;
+            padding: 30px;
+            border-radius: 15px;
+            transition: 0.3s;
+            border-bottom: 4px solid transparent;
         }
 
-        footer {
-            padding: 20px;
-            text-align: center;
-            font-size: 0.9rem;
-            background: #000;
-            color: #555;
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: var(--primary);
         }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2.5rem;
-            }
+        /* body stroll  */
+        body::-webkit-scrollbar {
+            width: 10px;
 
+        }
+
+        body::-webkit-scrollbar-track {
+            background: #1e1b4b00;
+            border-radius: 10px;
+        }
+
+        body::-webkit-scrollbar-thumb {
+            background: #e9e6e1;
+            border-radius: 10px;
+            border: 2px solid #1e1b4b;
+        }
+
+        body::-webkit-scrollbar-thumb:hover {
+            background: #e9e6e1;
+        }
+
+
+
+
+        @media screen and (max-width:600px) {
             .gallery-preview {
-                grid-template-columns: repeat(2, 1fr);
+
+                display: grid;
+                grid-template-columns: 1fr;
+                height: auto;
+                margin-bottom: 10px;
+
+
+
             }
-        }
 
+            .gallery-item {
+                height: 200px;
+            }
 
-        .image {
-            border-radius: 20px;
-            overflow: hidden;
-            margin: auto;
-            max-width: 300px;
-            object-fit: cover;
-            margin-bottom: 10px;
-        }
-
-        .direction,
-        .redes {
-            display: flex;
-            justify-content: space-around;
-            align-items: center;
-            padding: 10px;
-        }
-
-        .redes {
-            opacity: 60%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: 10px;
-            color: #ffffff;
-            gap: 20px;
-        }
-
-        .redes-i:hover,
-        .redes-i .y:hover {
-            opacity: 80%;
-
-        }
-
-        .redes-i {
-            width: 30px;
-            height: 30px;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background-color: #ffffff;
-            padding: 10px;
-            border-radius: 50%;
-        }
-
-        .redes-i i {
-            font-size: 20px;
-            color: blue;
-        }
-
-        .redes-i .y {
-            font-size: 20px;
-            color: #000;
-        }
-
-        .redes .g {
-            font-size: 20px;
-            color: #ffa500;
-        }
-
-        .ubication {
-            color: var(--primary);
-            font-weight: 700;
-            padding: 10px;
-        }
-
-        .ubication h3 {
-            margin-bottom: 10px;
         }
     </style>
 </head>
 
 <body>
 
-    <nav>
-        <div class="logo">ORUNA • CARPINTERÍA</div>
-        <div style="font-weight: bold; color: white;">CHILLIA, PERÚ</div>
+    <nav
+        class="flex justify-between items-center px-[5%]  py-4 bg-black/90 backdrop-blur-md fixed w-full top-0 z-[1000] border-b-2 border-[#e67e22]">
+
+        <div class="flex items-center gap-3">
+            <img src="img/logo-carpentry.png" alt="logo-carpentry" class="h-10 w-auto md:h-12 object-contain">
+            <div class="flex flex-col">
+                <span
+                    class="font-['Playfair_Display'] text-xl md:text-2xl text-[#e67e22] font-bold italic leading-none">
+                    ORUNA
+                </span>
+                <span class="text-[10px] text-white tracking-[3px] uppercase mt-1 opacity-80">
+                    Carpintería
+                </span>
+            </div>
+        </div>
+
+        <div class="flex items-center gap-2 font-bold text-white hidden sm:flex">
+            <span class="text-[#e67e22]"><i class="bi bi-geo-alt-fill text-orange-600"></i></span>
+            <span class="text-sm md:text-base">CHILLIA, PERÚ</span>
+        </div>
+
     </nav>
 
     <section class="hero">
-        <h1>Transformamos la <span>Madera</span> en Obra de Arte</h1>
-        <p style="font-size: 1.2rem; margin-bottom: 30px; color: #ccc;">Diseño exclusivo, calidad y durabilidad
-            garantizada.</p>
-        <a href="#contacto" class="cta-main">Solicitar Cotización</a>
-
+        <h1 class="font-['Playfair_Display'] text-5xl md:text-7xl max-w-[600px] leading-[1.1] mb-5">Transformamos la
+            <span class="text-[#e67e22]">Madera</span> en Obra de Arte
+        </h1>
+        <p class="text-xl mb-8 text-gray-400">Diseño exclusivo, calidad y durabilidad garantizada.</p>
+        <a href="#contacto"
+            class="bg-[#e67e22] text-white px-9 py-4 rounded-full font-bold uppercase tracking-widest hover:scale-105 transition-all w-fit shadow-lg shadow-orange-500/20">Solicitar
+            Cotización</a>
     </section>
 
-    <div class="gallery-preview">
+    <div class=" gallery-preview  ">
         <div class="gallery-item" style="background-image: url('img/ropero-de-cedro.jpg');"></div>
         <div class="gallery-item" style="background-image: url('img/sillas-sencillas.jpg');"></div>
         <div class="gallery-item" style="background-image: url('img/cama-sencilla.png');"></div>
         <div class="gallery-item" style="background-image: url('img/comedor-rustico-imagen.jpeg');"></div>
     </div>
 
-    <section class="section" id="servicios">
-        <h2 style="font-size: 3rem; font-family: 'Playfair Display', serif; margin-bottom: 10px;">Nuestros Servicios
-        </h2>
-        <p
-            style="color: var(--primary); font-weight: bold; letter-spacing: 2px; text-transform: uppercase; margin-bottom: 50px;">
-            Especialistas en Madera de Cedro y otros Acabados</p>
+    <section class="py-20 px-[10%] text-center" id="servicios">
+        <h2 class="text-5xl font-['Playfair_Display'] mb-2">Nuestros Servicios</h2>
+        <p class="text-[#e67e22] font-bold tracking-[2px] uppercase mb-12 italic">Especialistas en Madera de Cedro y
+            Tornillo</p>
 
-        <div class="services-grid">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div class="service-card">
-                <div class="image">
-                    <img style="width: 100%;" src="img/Fabricación.jpg" alt="Fabricación">
-                </div>
-                <h3>Fabricación a Medida</h3>
-                <p>Diseñamos y creamos piezas únicas desde cero: roperos de cedro, comedores robustos y cocinas
-                    integrales que se adaptan perfectamente a tu espacio y estilo.</p>
-                <ul style="list-style: none; margin-top: 15px; color: #aaa; font-size: 0.9rem;">
-                    <li>✓ Planos personalizados</li>
-                    <li>✓ Maderas seleccionadas</li>
-                </ul>
+                <img src="img/Fabricación.jpg" alt="Fabricación"
+                    class="rounded-xl mb-4 w-full aspect-square object-cover">
+                <h3 class="text-[#e67e22] text-xl font-bold mb-3">Fabricación a Medida</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Diseñamos piezas únicas: roperos de cedro, comedores
+                    robustos y cocinas integrales.</p>
             </div>
-
-            <div class="service-card" style="border-top: 4px solid var(--primary);">
-                <div class="image">
-                    <img style="width: 100%;" src="img/Reparación.jpg" alt="Reparación">
-                </div>
-                <h3>Reparación Estructural</h3>
-                <p>¿Tu mueble favorito está dañado? Reparamos estructuras, reforzamos sillas y mesas, y solucionamos
-                    problemas de polilla o humedad para devolverles la vida.</p>
-                <ul style="list-style: none; margin-top: 15px; color: #aaa; font-size: 0.9rem;">
-                    <li>✓ Refuerzo de uniones</li>
-                    <li>✓ Cambio de piezas dañadas</li>
-                </ul>
+            <div class="service-card border-b-4 border-[#e67e22]">
+                <img src="img/Reparación.jpg" alt="Reparación"
+                    class="rounded-xl mb-4 w-full aspect-square object-cover">
+                <h3 class="text-[#e67e22] text-xl font-bold mb-3">Reparación Estructural</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Reforzamos estructuras, reparamos sillas y solucionamos
+                    problemas de humedad.</p>
             </div>
-
             <div class="service-card">
-                <div class="image">
-                    <img style="width: 100%;" src="img/Mantenimiento.jpg" alt="Mantenimiento">
-                </div>
-                <h3>Mantenimiento y Acabados</h3>
-                <p>Especialistas en laqueado, barnizado y pulido premium. Aplicamos tratamientos protectores que
-                    resaltan la veta natural de la madera y garantizan su brillo por años.</p>
-                <ul style="list-style: none; margin-top: 15px; color: #aaa; font-size: 0.9rem;">
-                    <li>✓ Laqueado brillante/mate</li>
-                    <li>✓ Tratamiento antipolilla</li>
-                </ul>
+                <img src="img/Mantenimiento.jpg" alt="Mantenimiento"
+                    class="rounded-xl mb-4 w-full aspect-square object-cover">
+                <h3 class="text-[#e67e22] text-xl font-bold mb-3">Mantenimiento y Acabados</h3>
+                <p class="text-gray-400 text-sm leading-relaxed">Especialistas en laqueado y barnizado premium para
+                    resaltar la veta natural.</p>
             </div>
         </div>
     </section>
 
-    <section id="contacto" class="contact-area">
-        <h2>¿Listo para empezar tu proyecto?</h2>
-        <p style="margin-bottom: 25px;">Hablemos de tus ideas y hagámoslas realidad.</p>
-        <a href="https://wa.me/976299818" target="_blank" class="cta-main"
-            style="background: white; color: var(--primary);"><i class="bi bi-whatsapp"></i> Escríbenos
-            por WhatsApp</a>
+
+    <section id="contacto" class="bg-[#e67e22] py-16 px-[10%] text-center">
+        <h2 class="text-4xl font-bold text-white mb-2">¿Listo para empezar tu proyecto?</h2>
+        <p class="text-white/80 mb-8">Déjanos tus datos y recibirás una respuesta inmediata.</p>
+
+        <div class="max-w-md mx-auto bg-white p-8 rounded-2xl shadow-2xl">
+            <div class="space-y-4">
+                <input type="text" id="nombre" placeholder="Tu nombre"
+                    class="w-full p-3 border rounded-lg text-black focus:outline-orange-500">
+
+                <input type="tel" id="telefono" placeholder="Número de celular"
+                    class="w-full p-3 border rounded-lg text-black focus:outline-orange-500"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')">
+
+                <textarea id="pedido" placeholder="¿Qué proyecto tienes en mente?"
+                    class="w-full p-3 border rounded-lg text-black h-32 focus:outline-orange-500"></textarea>
+
+                <button onclick="enviarDatos()"
+                    class="w-full bg-[#1a1a1a] text-white py-3 rounded-lg font-bold hover:bg-black transition-colors">
+                    Enviar Mensaje
+                </button>
+            </div>
+            <div class="mt-6 pt-6 border-t text-gray-500 text-sm">
+                O si prefieres, escríbenos directo:
+                <a href="https://wa.me/987021842" class="block text-[#e67e22] font-bold mt-2"><i
+                        class="bi bi-whatsapp"></i> WhatsApp Directo</a>
+            </div>
+        </div>
     </section>
 
-    <footer>
-        <div class="direction">
-            <div class="ubication">
-                <h3>ADDRESS:</h3>
-                <div class="redes">
-                    <div class="redes-i">
-                        <a href="https://maps.app.goo.gl/jaSjTxDTDeFe7e3t7"><i class="bi bi-geo-alt-fill g"></i></a>
-                    </div>
-                    ANEXO HUANCHILCA - CHILIA - PATAZ
-                </div>
+    <footer class="bg-black py-12 px-6">
+        <div class="max-w-6xl mx-auto flex flex-col md:flex-row justify-around gap-10 text-center md:text-left">
+            <div>
+                <h3 class="text-[#e67e22] font-bold mb-4 uppercase text-sm">Ubicación</h3>
+                <p class="text-gray-500 flex items-center justify-center md:justify-start gap-2">
+                    <i class="bi bi-geo-alt-fill text-orange-600"></i> ANEXO HUANCHILCA - CHILIA - PATAZ
+                </p>
             </div>
-            <div class="ubication">
-                <h3>SIGUENOS EN NUETRAS REDES:</h3>
-                <div class="redes">
-                    <div class="redes-i">
-                        <a href="https://web.facebook.com/carpinteriaoruna"><i class="bi bi-facebook"></i></a>
-                    </div>
-                    <div class="redes-i">
-                        <a href="https://www.tiktok.com/@carpinteriaoruna"><i class="bi bi-tiktok y"></i></a>
-                    </div>
+            <div>
+                <h3 class="text-[#e67e22] font-bold mb-4 uppercase text-sm">Síguenos</h3>
+                <div class="flex justify-center gap-4">
+                    <a href="https://web.facebook.com/carpinteriaoruna"
+                        class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-blue-600 text-xl hover:scale-110 transition"><i
+                            class="bi bi-facebook"></i></a>
+                    <a href="https://www.tiktok.com/@carpinteriaoruna"
+                        class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-black text-xl hover:scale-110 transition"><i
+                            class="bi bi-tiktok"></i></a>
+                    <a href="https://wa.me/51967025756"
+                        class="fixed bottom-6 right-6 flex items-center gap-3 bg-[#e67e22] text-white px-4 py-3 rounded-full shadow-lg hover:scale-105 transition-all z-[2000] group">
+
+                        <div
+                            class="w-10 h-10 bg-white rounded-full flex items-center justify-center text-orange-600 text-xl shadow-inner">
+                            <i class="bi bi-whatsapp"></i>
+                        </div>
+
+                        <div class="flex flex-col pr-2">
+                            <span class="text-[10px] uppercase tracking-wider opacity-80 leading-none">Soporte</span>
+                            <span class="font-bold text-sm">¿Necesitas ayuda?</span>
+                        </div>
+                    </a>
                 </div>
             </div>
         </div>
-
-        &copy; 2026 Carpintería Oruna. Todos los derechos reservados.
-
+        <div class="mt-10 pt-5 border-t border-gray-900 text-gray-700 text-xs  text-center md:text-sm ">
+            © 2026 Carpintería Oruna. Todos los derechos reservados.
+        </div>
     </footer>
 
+    <script>
+        async function enviarDatos() {
+            const btn = document.querySelector("#contacto button");
+            const nombreInput = document.getElementById('nombre');
+            const telefonoInput = document.getElementById('telefono');
+            const pedidoInput = document.getElementById('pedido');
+
+            const nombre = nombreInput.value.trim();
+            const telefono = telefonoInput.value.trim();
+            const pedido = pedidoInput.value.trim();
+
+            // Validación profesional: Ahora incluye teléfono
+            if (!nombre || !telefono || !pedido) {
+                Swal.fire({
+                    icon: 'warning',
+                    title: 'Campos incompletos',
+                    text: 'Por favor, déjanos tu nombre, teléfono y el proyecto para contactarte.',
+                    confirmButtonColor: '#e67e22'
+                });
+                return;
+            }
+
+            // Estado de "Cargando"
+            const originalText = btn.innerHTML;
+            btn.disabled = true;
+            btn.innerHTML = `<i class="bi bi-arrow-repeat animate-spin"></i> Procesando...`;
+
+            try {
+                const response = await fetch('/api/registro', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ nombre, telefono, pedido })
+                });
+
+                if (response.ok) {
+                    Swal.fire({
+                        icon: 'success',
+                        title: '¡Solicitud Enviada!',
+                        text: 'Carpinteria Oruna ha recibido tu notificación y te contactará al ' + telefono,
+                        confirmButtonColor: '#e67e22',
+                        timer: 10000
+                    });
+
+                    // Limpiar formulario completo
+                    nombreInput.value = "";
+                    telefonoInput.value = "";
+                    pedidoInput.value = "";
+                } else {
+                    throw new Error("Error en servidor");
+                }
+
+            } catch (error) {
+                console.error("Error:", error);
+                Swal.fire({
+                    icon: 'error',
+                    title: 'Fallo de conexión',
+                    text: 'No pudimos conectar con el servidor. Intenta por WhatsApp.',
+                    footer: '<a href="https://wa.me/987021842" target="_blank">Ir a WhatsApp directo</a>',
+                    confirmButtonColor: '#d35400'
+                });
+            } finally {
+                btn.disabled = false;
+                btn.innerHTML = originalText;
+            }
+        } 
+    </script>
 </body>
 
 </html>
